@@ -9,8 +9,9 @@ export const config: Config = {
   onPrepare: () => {
     browser.ignoreSynchronization = true;
     reporter();
+    browser.manage().timeouts().implicitlyWait(5000);
   },
   jasmineNodeOpts: {
     defaultTimeoutInterval: 120000
-  }
+  },
 };

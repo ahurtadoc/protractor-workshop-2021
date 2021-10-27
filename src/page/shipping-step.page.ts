@@ -5,8 +5,8 @@ export class ShippingStepPage {
   private termsOfService: ElementFinder;
 
   constructor () {
-    this.proccedTopay = $('#form > p > button > span');
     this.termsOfService = $('#cgv');
+    this.proccedTopay = $('#form > p > button > span');
   }
 
   public async acceptTerms(): Promise<void> {
