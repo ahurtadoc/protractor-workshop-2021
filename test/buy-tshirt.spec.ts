@@ -13,9 +13,6 @@ import {
 import { SignInStepPage } from '../src/page/sign-in-step.page';
 
 describe('Buy a t-shirt', () => {
-  beforeEach(() => {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 150000;
-  });
 
   it('then should be bought a t-shirt', async () => {
     const menuContentPage : MenuContentPage = new MenuContentPage();
@@ -30,7 +27,6 @@ describe('Buy a t-shirt', () => {
     const orderSummaryPage : OrderSummaryPage = new OrderSummaryPage();
 
     await browser.get('http://automationpractice.com/');
-    await(browser.sleep(10000));
 
     await menuContentPage.goToTShirtMenu();
     await(browser.sleep(5000));
@@ -52,11 +48,12 @@ describe('Buy a t-shirt', () => {
     await(browser.sleep(5000));
 
     await shippingStepPage.acceptTerms();
+    await(browser.sleep(1000));
     await shippingStepPage.goToPayStep();
-    await(browser.sleep(5000));
+    await(browser.sleep(8000));
 
     await paymentStepPage.goToBankPay();
-    await(browser.sleep(5000));
+    await(browser.sleep(8000));
 
     await bankPaymentPage.pay();
     await(browser.sleep(5000));

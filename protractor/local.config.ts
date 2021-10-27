@@ -1,20 +1,16 @@
-import { browser, Config } from "protractor";
-import { reporter } from "./helpers/reporter";
-
-const chromeConfig = {
-  browserName: 'chrome',
-  chromeOptions: { args: ["--headless", "--disable-gpu", "--window-size=800,600", "--remote-debugging-port=9222"] }
-}
-
+import { browser, Config } from 'protractor';
+import { reporter } from './helpers/reporter';
 
 export const config: Config = {
-  capabilities: chromeConfig,
   framework: 'jasmine',
   specs: ['../test/**/*.spec.js'],
-  getPageTimeout: 18000,
+  getPageTimeout: 30000,
   SELENIUM_PROMISE_MANAGER: false,
   onPrepare: () => {
     browser.ignoreSynchronization = true;
     reporter();
+  },
+  jasmineNodeOpts: {
+    defaultTimeoutInterval: 120000
   }
 };
