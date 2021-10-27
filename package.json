@@ -6,7 +6,8 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "npm run clean && tsc",
-    "test": "protractor dist/protractor/local.config.js"
+    "test:local": "protractor dist/protractor/local.config.js",
+    "test:headless": "protractor dist/protractor/headless.config.js"
   },
   "repository": {
     "type": "git",
