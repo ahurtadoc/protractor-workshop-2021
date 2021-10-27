@@ -1,4 +1,4 @@
-import { Config } from "protractor";
+import { browser, Config } from "protractor";
 
 const chromeConfig = {
   browserName: 'chrome',
@@ -10,5 +10,8 @@ export const config: Config = {
   capabilities: chromeConfig,
   framework: 'jasmine',
   specs: ['../test/google.spec.js'],
-  seleniumAddress: 'http://localhost:4444/wd/hub'
+  seleniumAddress: 'http://localhost:4444/wd/hub',
+  onPrepare: () => {
+    browser.ignoreSynchronization = true;
+  }
 };
