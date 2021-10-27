@@ -10,7 +10,8 @@ const chromeConfig = {
 export const config: Config = {
   capabilities: chromeConfig,
   framework: 'jasmine',
-  specs: ['../test/google.spec.js'],
+  specs: ['../test/**/*.spec.js'],
+  getPageTimeout: 18000,
   SELENIUM_PROMISE_MANAGER: false,
   onPrepare: () => {
     browser.ignoreSynchronization = true;
