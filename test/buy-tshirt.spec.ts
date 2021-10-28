@@ -16,6 +16,7 @@ describe('Open page to buy a t-shirt', () => {
 
   beforeAll(async () => {
     await browser.get('http://automationpractice.com/');
+    console.log('0');
   });
 
   describe('go to tshirt menu and start payment steps', () => {
@@ -26,11 +27,12 @@ describe('Open page to buy a t-shirt', () => {
       const productAddedModalPage : ProductAddedModalPage = new ProductAddedModalPage();
       const summaryStepPage : SummaryStepPage = new SummaryStepPage();
 
-      await menuContentPage.goToTShirtMenu();
-      await productListPage.goToAddedModal();
+      await menuContentPage.goToTShirtMenu(browser);
+      await productListPage.goToAddedModal(browser);
       await productAddedModalPage.goToSummaryStep(browser);
 
       await summaryStepPage.goToSignInStep(browser);
+      console.log('1');
     });
 
     describe('sign in to proceed address choosement', () => {
@@ -41,6 +43,7 @@ describe('Open page to buy a t-shirt', () => {
         await signInStepPage.fillForm();
         await signInStepPage.signIn();
         await addresStepPage.goToTShipping();
+        console.log('2');
       });
 
       describe('choose default address and go to select payment option', () => {
@@ -50,6 +53,7 @@ describe('Open page to buy a t-shirt', () => {
 
           await shippingStepPage.acceptTerms();
           await shippingStepPage.goToPayStep();
+          console.log('3');
         });
 
         describe('pay order with bank payment method', () => {
@@ -60,11 +64,13 @@ describe('Open page to buy a t-shirt', () => {
 
             await paymentStepPage.goToBankPay(browser);
             await bankPaymentPage.pay();
+            console.log('4');
           });
 
           it('then should be bought a t-shirt', async () => {
             const orderSummaryPage : OrderSummaryPage = new OrderSummaryPage();
 
+            console.log('5');
             await expect(orderSummaryPage.getOrderSummary())
                 .toBe('Your order on My Store is complete.');
           });
