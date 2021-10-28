@@ -1,11 +1,18 @@
 import { browser, Config } from 'protractor';
 import { reporter } from './helpers/reporter';
+import { AwesomeReport } from 'jasmine-awesome-report';
 
 const chromeConfig = {
   browserName: 'chrome',
   chromeOptions: {
     args: ['--headless', '--disable-gpu']
   }
+};
+
+const reporterConfig = {
+  fullPath: 'reports',
+  fileName: 'awesome',
+  merge: true
 };
 
 export const config: Config = {
@@ -16,10 +23,11 @@ export const config: Config = {
   onPrepare: () => {
     browser.ignoreSynchronization = true;
     reporter();
-    browser.manage().timeouts().implicitlyWait(3000);
+    browser.manage().timeouts().implicitlyWait(0);
+    jasmine.getEnv().addReporter(AwesomeReport.getReport(reporterConfig));
   },
-  capabilities: chromeConfig,
   jasmineNodeOpts: {
     defaultTimeoutInterval: 120000
-  }
+  },
+  capabilities: chromeConfig
 };

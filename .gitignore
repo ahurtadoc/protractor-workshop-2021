@@ -157,4 +157,9 @@ dist
 .history
 .ionide
 
+
+# Jasmine awesome reports
+reports
+
 # End of https://www.toptal.com/developers/gitignore/api/linux,visualstudiocode,node
+
