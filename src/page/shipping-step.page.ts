@@ -10,7 +10,7 @@ export class ShippingStepPage {
   }
 
   public async acceptTerms(): Promise<void> {
-    this.termsOfService.click();
+    await this.termsOfService.click();
   }
 
   public async goToPayStep(): Promise<void> {
