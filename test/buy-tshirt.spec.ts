@@ -26,6 +26,7 @@ describe('Open page to buy a t-shirt', () => {
       const productAddedModalPage : ProductAddedModalPage = new ProductAddedModalPage();
       const summaryStepPage : SummaryStepPage = new SummaryStepPage();
 
+
       await menuContentPage.goToTShirtMenu(browser);
       await productListPage.goToAddedModal(browser);
       await productAddedModalPage.goToSummaryStep(browser);
