@@ -1,4 +1,4 @@
-import { $, ElementFinder } from 'protractor';
+import { $, ElementFinder, ProtractorBrowser } from 'protractor';
 
 export class ProductAddedModalPage {
   private proceedToPaymen: ElementFinder;
@@ -7,7 +7,9 @@ export class ProductAddedModalPage {
     this.proceedToPaymen = $('[style*="display: block;"] .button-container > a');
   }
 
-  public async goToSummaryStep(): Promise<void> {
+  public async goToSummaryStep(browser: ProtractorBrowser): Promise<void> {
+    await browser.wait(browser.ExpectedConditions.presenceOf(this.proceedToPaymen), 3000);
     await this.proceedToPaymen.click();
+
   }
 }

@@ -26,15 +26,16 @@ describe('Buy a t-shirt', () => {
     const bankPaymentPage : BankPaymentPage = new BankPaymentPage();
     const orderSummaryPage : OrderSummaryPage = new OrderSummaryPage();
 
+    // const ec = browser.ExpectedConditions;
     await browser.get('http://automationpractice.com/');
 
     await menuContentPage.goToTShirtMenu();
 
     await productListPage.goToAddedModal();
 
-    await productAddedModalPage.goToSummaryStep();
+    await productAddedModalPage.goToSummaryStep(browser);
 
-    await summaryStepPage.goToSignInStep();
+    await summaryStepPage.goToSignInStep(browser);
 
     await signInStepPage.fillForm();
     await signInStepPage.signIn();
@@ -44,7 +45,7 @@ describe('Buy a t-shirt', () => {
     await shippingStepPage.acceptTerms();
     await shippingStepPage.goToPayStep();
 
-    await paymentStepPage.goToBankPay();
+    await paymentStepPage.goToBankPay(browser);
 
     await bankPaymentPage.pay();
 
